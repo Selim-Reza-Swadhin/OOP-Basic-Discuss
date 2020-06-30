@@ -26,7 +26,7 @@
         <fieldset>
             <legend>Please Log In</legend>
             <label for="uname">Username</label>
-            <input type="text" name="uname" id="uname" value="">
+            <input type="text" name="uname" id="uname" value="" placeholder="Username or Email">
             <br>
             <br>
             <label for="pword">Password</label>

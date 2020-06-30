@@ -21,8 +21,8 @@ if (!isset($_SESSION['visits'])){
     echo  "<h2 style='color: green'>Welcome back, ".$_SESSION['user']."<br></h2>";
     echo 'You previous visited this page on : <br><br>';
     foreach ($_SESSION['visits'] as $v){
-        echo date('d-m-Y h:i:s:a', $v).'<br>';
-        //echo date('d-m-Y h:i:s:a', time()).'<br>';
+        echo date('d-m-Y g:i:s:a', $v).'<br>';
+        //echo date('d-m-Y g:i:s:a', time()).'<br>';
     }
 }
 ?>

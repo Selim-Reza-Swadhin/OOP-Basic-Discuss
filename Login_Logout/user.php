@@ -26,7 +26,7 @@ class User{
         $uname = htmlentities($_POST['uname'], ENT_QUOTES);
         $pword = htmlentities($_POST['pword'], ENT_QUOTES);
         //retrieves the matching info from the DB if it exists
-        $sql = "SELECT id, login_name, user_email, password FROM `users` WHERE `login_name` = :uname LIMIT 1";
+        $sql = "SELECT id, login_name, user_email, password FROM `users` WHERE `login_name` = :uname || `user_email` = :uname LIMIT 1";
         
 
         try
@@ -47,11 +47,14 @@ class User{
             //check the hashed password with the stored hash
             if ($user['password'] === $hash){
                 //stores user info in the session as an array
-                $_SESSION['useer']= array(
+               /*$_SESSION['useer']= array(
                     'id' => $user['id'],
                     'name' => $user['login_name'],
                     'email' => $user['user_email']
-                );
+                );*/
+                $_SESSION['useer'] = $user['login_name'];
+                $_SESSION['useerEmail'] = $user['user_email'];
+
                 header('location:home.php');
             }else{
                 throw new \Exception('<span style="color: red">Your username or password is invalid.</span>');

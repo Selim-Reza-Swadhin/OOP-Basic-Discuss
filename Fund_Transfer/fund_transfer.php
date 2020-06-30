@@ -30,8 +30,8 @@ if (is_numeric($_POST['amount'])) {
 
     //update sender account
     $sql = "UPDATE account_info
-    SET current_balance = current_balance - ?
-    WHERE id = ?";
+            SET current_balance = current_balance - ?
+            WHERE id = ?";
     $statement = $mysqli->prepare($sql);
     $statement->bind_param("di", $_POST['amount'], $_POST['from']);
     $result = $statement->execute();
@@ -183,7 +183,7 @@ $mysqli->close();
             <tbody>
             <?php
             foreach ($accountDetails as $details) {
-                echo "<tr><td>" . date("d-m-Y H:i:s:a", strtotime($details['trnx_date'])) .
+                echo "<tr><td>" . date("d-m-Y g:i:s:a", strtotime($details['trnx_date'])) .
                     "</td><td>" . $details['particulars'] .
                     "</td><td>" . $details['debit'] .
                     "</td><td>" . $details['credit'] .
